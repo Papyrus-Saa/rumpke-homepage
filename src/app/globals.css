@@ -50,15 +50,6 @@ input::placeholder, textarea::placeholder {
   animation: slide-in 0.3s ease-out;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 
 @theme {
 --color-bg-d: #18181C;
@@ -80,11 +71,12 @@ input[type=number] {
 --color-secondary: #FCFCFC;
 --color-secondary-dark: #212126;
 
+--font-size-h1-mobile: 1.5rem;
+--font-size-h1-tablet: 1.875rem;
+--font-size-h1-desktop: 2.25rem;
+--font-size-subtitle: 1rem;
+--font-size-body: 0.875rem;
 
-/* --color-primary: #7B3FA0;
---color-primary-dark: #4B235A;
---color-secondary: #B18FCF;
---color-secondary-dark: #5E3B6C; */
 
 /* Status colors */
 --color-status-published: #22C55E;
@@ -94,21 +86,6 @@ input[type=number] {
 --color-status-draft: #9CA3AF;
 --color-status-hidden: #374151;
 
-/* Admin colors */
---color-card-bg-l: #FFFFFF;
---color-card-bg-d: #212121;
-
-/* card bg secondary */
---color-card-secondary-bg-l: #F9FAFB;
---color-card-secondary-bg-d: #262626;
-
-/* text colors admin panel */
---color-admin-text-l: #111827;
---color-admin-text-d: #D1D5DB;
-
-/* Bordes panel admin */
---color-admin-border-l: #D1D5DB;
---color-admin-border-d: #3A3A3A
 }
 
 .poem {

@@ -1,9 +1,9 @@
 
 "use client";
 
-
+import Link from 'next/link';
 import PropertyCard from './PropertyCard';
-import type { PropertyOperation } from '@/types';
+import type { OperationType } from '@/types';
 
 interface Property {
   id: string;
@@ -11,40 +11,34 @@ interface Property {
   title: string;
   image: string;
   price?: string;
-  operationType: PropertyOperation;
+  operationType: OperationType;
 }
 
 
 interface PropertiesGridProps {
   properties: Property[];
-  onSelectProperty?: (property: any) => void;
+  onSelectProperty?: (property: Property) => void;
   category?: string;
   children?: React.ReactNode;
 }
 
 
-
 const PropertiesGrid: React.FC<PropertiesGridProps> = ({ properties, onSelectProperty, children }) => {
-  const title = 'Immobilienangebote';
+
 
   return (
     <>
-      <div className="">
-        <h2 className="text-xl sm:text-xl mb-16 px-2 sm:px-0 xl:text-center">{title}</h2>
-
-      </div>
-      <div className="sm:p-1">
+      <div className="sm:p-2">
         {properties.map((property) => (
-          <a
+          <Link
             key={property.id}
             href={`/object/${property.slug}`}
             className="block"
-            tabIndex={0}
           >
             <PropertyCard
               property={property}
             />
-          </a>
+          </Link>
         ))}
         {children}
       </div>

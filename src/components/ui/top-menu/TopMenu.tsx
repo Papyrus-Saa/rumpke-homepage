@@ -1,12 +1,8 @@
 'use client'
 
-
 import { useUIStore } from '@/store/ui/ui-store'
-
-
 import { IoMenuOutline } from 'react-icons/io5';
 import CategoryButton from '../category-button/CategoryButton';
-import RumpkeLogo from '../logo/RumpkeLogo';
 import LogoMobile from '../logo-mobile/LogoMobile';
 
 
@@ -17,8 +13,8 @@ const Topmenu = () => {
 
   return (
     <>
-      <div className=' flex justify-between  items-center w-full py-2 mb-12'>
-        <div className=''>
+      <div className=' flex justify-between  items-center w-full py-2'>
+        <div className='flex flex-col items-center justify-center'>
           <LogoMobile />
         </div>
         <div className='flex'>

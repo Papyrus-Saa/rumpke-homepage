@@ -3,7 +3,6 @@
 # dependencies
 
 .env
-.github/
 .cursorrules/
 
 /node_modules

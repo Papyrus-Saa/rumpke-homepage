@@ -1,14 +1,16 @@
 
-import { ReactQueryProvider } from './providers/ReactQueryProvider';
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import CompanyTitle from "@/components/ui/companyTitle/CompanyTitle";
 import Script from "next/script";
-import GlobalBorderColor from "@/components/ui/GlobalBorderColor";
+
 import ContactButtom from '@/components/ui/contact-buttom/ContactTooltip';
-import { Title } from '@/components/ui/title/Title';
+import Topmenu from "@/components/ui/top-menu/TopMenu";
+import Footer from "@/components/ui/footer/Footer";
+
 
 
 
@@ -29,17 +31,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="antialiased">
         <Script src="https://widget.cloudinary.com/v2.0/global/all.js" strategy="beforeInteractive" />
         <ThemeProvider>
-          <ReactQueryProvider>
-            <div className="bg-bg-l text-zinc-800 dark:bg-bg-d dark:text-zinc-100">
-              {/* <div className='hidden md:block fixed top-0 right-6 xl:right-36 z-500'>
-                <ContactButtom />
-              </div> */}
-              <GlobalBorderColor />
-                <div className=" mx-auto">
-                  {children}
-                </div>
-              </div>
-          </ReactQueryProvider>
+          <div className="bg-bg-l text-zinc-800 dark:bg-bg-d dark:text-zinc-100">
+            {/* <div className='hidden md:block fixed bottom-0 left-6 xl:right-36 z-500'>
+              <ContactButtom />
+            </div> */}
+            <div className="">
+              <Topmenu />
+              {children}
+              <Footer />
+            </div>
+          </div>
           <CompanyTitle />
         </ThemeProvider>
       </body>
