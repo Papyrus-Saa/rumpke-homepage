@@ -28,7 +28,7 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="antialiased">
         <Script src="https://widget.cloudinary.com/v2.0/global/all.js" strategy="beforeInteractive" />
         <ThemeProvider>

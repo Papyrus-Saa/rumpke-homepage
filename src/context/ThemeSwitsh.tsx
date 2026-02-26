@@ -3,12 +3,12 @@
 import React from 'react';
 
 
-import { useTheme } from "@/context/ThemeContext";
+import { useTheme } from "next-themes";
 import { RiSunLine, RiMoonClearLine } from "react-icons/ri";
 
 
 export const ThemeSwitch = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -16,6 +16,10 @@ export const ThemeSwitch = () => {
   }, []);
 
   if (!mounted) return null;
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   return (
     <div
