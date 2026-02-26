@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import CompanyTitle from "@/components/branding/companyTitle/CompanyTitle";
 import Script from "next/script";
 
-import ContactButtom from '@/components/features/contact-buttom/ContactTooltip';
+
 import Topmenu from "@/components/layout/top-menu/TopMenu";
 import Footer from "@/components/layout/footer/Footer";
 import SecondaryNav from "@/components/layout/secondary-nav/SecondaryNav";
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Script src="https://widget.cloudinary.com/v2.0/global/all.js" strategy="beforeInteractive" />
         <ThemeProvider>
           <div className="bg-bg-l text-zinc-800 dark:bg-bg-d dark:text-zinc-100">
-            {/* <div className='hidden md:block fixed bottom-0 left-6 xl:right-36 z-500'>
+            {/* <div className='fixed top-0 left-50 hidden md:flex w-fit mx-auto items-center py-2 px-3  rounded-tr-md gap-5 bg-primary dark:bg-primary-dark text-white z-500'>
               <ContactButtom />
             </div> */}
             <div className="">

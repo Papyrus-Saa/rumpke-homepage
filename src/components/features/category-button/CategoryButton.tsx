@@ -1,7 +1,7 @@
 
 
 import Link from "next/link";
-import { ReactNode } from "react";
+
 import { OPERATION_TYPE_COLOR, OperationType } from '@/store/ui/ui-store';
 
 interface CategoryButtonProps {
@@ -14,7 +14,7 @@ interface CategoryButtonProps {
 }
 
 
-const CategoryButton = ({ name, href, color = "border-l-4 border-primary", className, style, onClick }: CategoryButtonProps) => {
+const CategoryButton = ({ name, href = "border-l-4 border-primary", className, style, onClick }: CategoryButtonProps) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (onClick) {
       e.preventDefault();

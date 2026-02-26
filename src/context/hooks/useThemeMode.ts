@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 export type Theme = "light" | "dark";
 
 export function useThemeMode() {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem("theme") as Theme | null;
+      const systemPref: Theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      return saved || systemPref;
+    }
+    return "light";
+  });
 
-  useEffect(() => {
-    const saved = localStorage.getItem("theme") as Theme | null;
-    const systemPref: Theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    setTheme(saved || systemPref);
-  }, []);
   useEffect(() => {
     localStorage.setItem("theme", theme);
   }, [theme]);

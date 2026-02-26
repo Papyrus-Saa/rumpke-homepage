@@ -2,21 +2,22 @@
 
 import { useUIStore } from "@/store/ui/ui-store";
 import Link from "next/link";
-import { ReactNode, cloneElement } from "react";
+import { ReactNode, cloneElement, ReactElement, isValidElement } from "react";
 
 interface NavItemProps {
   href: string;
   icon?: ReactNode;
   children: ReactNode;
-  color?: string;
-  mt?: string;
+
 }
 
-const NavItem = ({ href, icon, children, color, mt }: NavItemProps) => {
+const NavItem = ({ href, icon, children }: NavItemProps) => {
 
   const closeSidemenu = useUIStore((state) => state.closeSidemenu);
-  const iconWithMargin = icon && typeof icon === 'object' && 'type' in icon
-    ? cloneElement(icon as any, { className: `${(icon as any).props?.className || ''} mr-2` })
+  const iconWithMargin = icon && isValidElement(icon)
+    ? cloneElement(icon as ReactElement<{ className?: string }>, {
+      className: `${(icon as ReactElement<{ className?: string }>).props?.className || ''} mr-2`
+    })
     : icon;
   return (
     <Link
@@ -31,3 +32,4 @@ const NavItem = ({ href, icon, children, color, mt }: NavItemProps) => {
 }
 
 export default NavItem;
+

@@ -14,7 +14,7 @@ const Topmenu = () => {
 
   return (
     <>
-      <div className='fixed top-0 right-0 z-500 flex justify-between  items-center w-full py-2'>
+      <div className='fixed top-0 right-0 z-100 flex justify-between  items-center w-full py-2'>
         <div className='flex flex-col items-center justify-center'>
           <LogoMobile />
         </div>

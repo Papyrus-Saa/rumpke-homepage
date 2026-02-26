@@ -10,7 +10,7 @@ const ContactTooltip = () => {
   if (pathname.startsWith('/admin')) return null;
   return (
     <StyledWrapper>
-      <ul className="flex justify-around example-1  pt-1 text-bg-l dark:text-card-text-d bg-primary dark:bg-primary-dark py-1 rounded-b px-2 dark:hover:shadow-primary hover:shadow-primary-dark shadow-md transform " >
+      <ul className="flex justify-around example-1  pt-1 text-bg-l dark:text-card-text-d py-1 rounded-b px-2 dark:hover:shadow-primary hover:shadow-primary-dark shadow-md transform " >
         <li className="icon-content">
           <Link
             href="https://www.facebook.com/profile.php?id=61572884870790"
@@ -39,7 +39,7 @@ const ContactTooltip = () => {
         </li>
         <li className="icon-content hidden md:block">
           <Link
-            href="/#leadform"
+            href="/#"
             aria-label="Email"
             data-social="email"
             rel="noopener noreferrer"

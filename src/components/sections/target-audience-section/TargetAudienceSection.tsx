@@ -43,7 +43,7 @@ const TargetAudienceSection = () => {
             Wir bieten individuelle Unterstützung für verschiedene Zielgruppen – damit jeder die passende Lösung findet.
           </p>
           <div className="flex flex-col gap-8 w-full h-full">
-            {cards.map((card, idx) => (
+            {cards.map((card) => (
               <div
                 key={card.title}
                 className="flex items-center w-full h-full lg:rounded px-2 dark:bg-bg-d bg-bg-l"

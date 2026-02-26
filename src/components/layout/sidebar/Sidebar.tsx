@@ -1,8 +1,6 @@
 'use client';
 
-
-import SidebarItem from "@/components/ui/nav-item/NavItem";
-import { IoCloseOutline, IoSearchOutline, IoHomeOutline, IoBusinessOutline, IoDiamondOutline, IoMapOutline, IoChatbubbleEllipsesOutline, IoBriefcaseOutline, IoStarOutline, IoMailOutline } from "react-icons/io5"
+import { IoCloseOutline, IoHomeOutline, IoBusinessOutline,  IoMapOutline, IoChatbubbleEllipsesOutline, IoBriefcaseOutline,  IoMailOutline } from "react-icons/io5"
 
 import { useUIStore } from "@/store/ui/ui-store";
 import clsx from "clsx";
