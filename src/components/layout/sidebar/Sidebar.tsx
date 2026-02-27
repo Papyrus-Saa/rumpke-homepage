@@ -1,8 +1,6 @@
 'use client';
 
 import { IoCloseOutline, IoHomeOutline, IoBusinessOutline,  IoMapOutline, IoChatbubbleEllipsesOutline, IoBriefcaseOutline,  IoMailOutline } from "react-icons/io5"
-
-import clsx from "clsx";
 import { IoAlbumsOutline } from "react-icons/io5";
 import ContactTooltip from "@/components/features/contact-buttom/ContactTooltip";
 import NavItem from "@/components/ui/nav-item/NavItem";

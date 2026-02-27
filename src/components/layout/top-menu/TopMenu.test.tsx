@@ -34,7 +34,7 @@ Object.defineProperty(window, 'localStorage', {
 
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-const Topmenu = require('@/components/layout/top-menu/TopMenu').default;
+import Topmenu from '@/components/layout/top-menu/TopMenu';
 
 
 
