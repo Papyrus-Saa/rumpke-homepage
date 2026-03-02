@@ -1,50 +1,50 @@
+import PropertyCard from './PropertyCard';
 
-// "use client";
+interface Property {
+  id: string;
+  slug: string;
+  title: string;
+  type: string;
+  price: string;
+  location: string;
+  imageUrl: string;
+  area?: string;
+  rooms?: number;
+  operationType?: 'kauf' | 'miete';
+}
 
-// import Link from 'next/link';
-// import PropertyCard from './PropertyCard';
-// import type { OperationType } from '@/types';
+interface PropertiesGridProps {
+  properties: Property[];
+}
 
-// interface Property {
-//   id: string;
-//   slug: string;
-//   title: string;
-//   image: string;
-//   price?: string;
-//   operationType: OperationType;
-// }
+export default function PropertiesGrid({ properties }: PropertiesGridProps) {
+  if (properties.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-card-text-l dark:text-card-text-d text-lg">
+          Keine Immobilien gefunden.
+        </p>
+      </div>
+    );
+  }
 
-
-// interface PropertiesGridProps {
-//   properties: Property[];
-//   onSelectProperty?: (property: Property) => void;
-//   category?: string;
-//   children?: React.ReactNode;
-// }
-
-
-// const PropertiesGrid: React.FC<PropertiesGridProps> = ({ properties, onSelectProperty, children }) => {
-
-
-//   return (
-//     <>
-//       <div className="sm:p-2">
-//         {properties.map((property) => (
-//           <Link
-//             key={property.id}
-//             href={`/object/${property.slug}`}
-//             className="block"
-//           >
-//             <PropertyCard
-//               property={property}
-//             />
-//           </Link>
-//         ))}
-//         {children}
-//       </div>
-
-//     </>
-//   );
-// };
-
-// export default PropertiesGrid;
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {properties.map((property) => (
+        <PropertyCard
+          key={property.id}
+          id={property.id}
+          slug={property.slug}
+          title={property.title}
+          type={property.type}
+          price={property.price}
+          location={property.location}
+          imageUrl={property.imageUrl}
+          area={property.area}
+          rooms={property.rooms}
+          operationType={property.operationType}
+        />
+      ))}
+    </div>
+  );
+}

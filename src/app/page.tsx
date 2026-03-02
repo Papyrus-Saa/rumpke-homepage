@@ -3,9 +3,10 @@ import ServicesSection from "@/components/sections/services-section/ServicesSect
 import TargetAudienceSection from "@/components/sections/target-audience-section/TargetAudienceSection"
 import Sidebar from "@/components/layout/sidebar/Sidebar"
 import HeroVideo from "@/components/hero/HeroVideo"
-
 import WhyChooseRumpke from "@/components/sections/why-choose-rumpke/WhyChooseRumpke"
 import Title from "@/components/ui/title/Title"
+
+import { MOCK_FEATURED_PROPERTIES } from "@/data/mock-properties"
 
 const page = () => {
   return (
@@ -18,15 +19,17 @@ const page = () => {
         <Title variant="h1"
           align="center"
           size="xl"
-          subtitle="– Mehr als nur 4 Wände –"
-          className="">Willkommen bei Rumpke Immobilien Rumpke Immobilien</Title>
+          subtitle="– lore ipsum dolor sit amet –"
+          className="">Lorem ipsum dolor sit amet</Title>
       </div>
 
-      <main className="">
+      <main className="xl:px-20">
         <Sidebar />
         <TargetAudienceSection />
-        <WhyChooseRumpke />
-        <ServicesSection />
+        <div className="grid lg:grid-cols-2">
+          <WhyChooseRumpke />
+          <ServicesSection />
+        </div>
         <PersonalServiceCard />
       </main>
     </div>
