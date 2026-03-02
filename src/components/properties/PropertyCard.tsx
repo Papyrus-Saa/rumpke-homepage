@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Home, MapPin } from 'lucide-react';
 
 interface PropertyCardProps {
+  id: string;
   slug: string;
   title: string;
   type: string;
@@ -37,7 +38,7 @@ export default function PropertyCard({
             className="object-cover transition-transform duration-300 group-hover:scale-110"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-
+          
           {/* Type Badge */}
           <div className="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded text-sm font-medium">
             {type}
@@ -45,8 +46,9 @@ export default function PropertyCard({
 
           {/* Operation Type Badge */}
           {operationType && (
-            <div className={`absolute top-3 right-3 px-3 py-1 rounded text-sm font-medium text-white ${operationType === 'kauf' ? 'bg-buy' : 'bg-rent'
-              }`}>
+            <div className={`absolute top-3 right-3 px-3 py-1 rounded text-sm font-medium text-white ${
+              operationType === 'kauf' ? 'bg-buy' : 'bg-rent'
+            }`}>
               {operationType === 'kauf' ? 'Kaufen' : 'Mieten'}
             </div>
           )}
@@ -59,7 +61,7 @@ export default function PropertyCard({
           </h3>
 
           <div className="flex items-center gap-2 text-card-text-l dark:text-card-text-d mb-3">
-            <MapPin className="w-4 h-4 shrink-0" />
+            <MapPin className="w-4 h-4 flex-shrink-0" />
             <span className="text-sm line-clamp-1">{location}</span>
           </div>
 

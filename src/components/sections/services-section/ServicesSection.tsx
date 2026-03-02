@@ -1,6 +1,5 @@
-import { IoArrowForward } from 'react-icons/io5';
-import Link from 'next/link';
 import Title from '@/components/ui/title/Title';
+import ServiceCard from './ServiceCard';
 
 const services = [
   {
@@ -22,22 +21,17 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="w-full md:py-2 mb-12 lg:rounded lg:p-4 p-6 bg-secondary dark:bg-secondary-dark shadow-secondary">
-      <div className="mx-auto">
+    <section className="w-full md:py-12 mb-12 lg:rounded  p-6  shadow-secondary">
+      <div className="max-w-md mx-auto">
         <Title variant="h2" size="xl" align="center">Unsere Leistungen</Title>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 lg:gap-3">
+        <div className="flex flex-col gap-4">
           {services.map((service) => (
-            <div key={service.title} className="flex flex-col items-center bg-bg-l dark:bg-bg-d  lg:rounded p-6 shadow-sm ">
-              <div className="font-semibold text-lg mb-2">{service.title}</div>
-              <div className="text-sm text-center mb-4">{service.text}</div>
-              <Link
-                href={service.link}
-                className="flex items-center justify-center w-9 h-9 rounded-full mt-auto"
-                aria-label={service.title}
-              >
-                <IoArrowForward size={18} className="text-primary cursor-pointer p-0 bg-transparent hover:scale-125 transition" />
-              </Link>
-            </div>
+            <ServiceCard
+              key={service.title}
+              title={service.title}
+              text={service.text}
+              link={service.link}
+            />
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { IoPersonCircleOutline, IoLocationOutline, IoShieldCheckmarkOutline } from 'react-icons/io5';
 import Title from '@/components/ui/title/Title';
+import FeatureCard from './FeatureCard';
 
 const features = [
   {
@@ -21,20 +22,17 @@ const features = [
 
 const WhyChooseRumpke = () => {
   return (
-    <section className="w-full md:py-2 mb-12 lg:rounded lg:p-4 p-6 bg-secondary dark:bg-secondary-dark shadow-secondary">
-      <div className="max-w-3xl mx-auto">
+    <section className="w-full md:py-12 mb-12 lg:rounded  p-6  shadow-secondary">
+      <div className="max-w-md mx-auto">
         <Title variant="h2" size="xl" align="center">Warum Rumpke Immobilien?</Title>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           {features.map((feature) => (
-            <div key={feature.title} className="flex items-start gap-4 dark:bg-bg-d bg-bg-l lg:rounded p-4">
-              <div className="shrink-0 ">
-                {feature.icon}
-              </div>
-              <div>
-                <div className="font-semibold text-lg mb-1 ">{feature.title}</div>
-                <div className="text-sm ">{feature.text}</div>
-              </div>
-            </div>
+            <FeatureCard
+              key={feature.title}
+              icon={feature.icon}
+              title={feature.title}
+              text={feature.text}
+            />
           ))}
         </div>
       </div>
