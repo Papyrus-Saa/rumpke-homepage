@@ -35,6 +35,7 @@ const Topmenu = () => {
           <div className='flex items-center justify-center rounded-md md:h-8 '>
             <button
               data-testid="menu-btn"
+              aria-label="Open navigation menu"
               className='mx-2 md:hidden p-1 rounded cursor-pointer hover:bg-primary/10 dark:hover:bg-primary-dark/20'>
               <IoMenuOutline size={28} />
             </button>
