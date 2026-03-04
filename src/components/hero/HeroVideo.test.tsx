@@ -31,9 +31,9 @@ interface MockTitleProps {
 }
 
 jest.mock('@/components/ui/title/Title', () => {
-  return function MockTitle({ children, subtitle, ...props }: MockTitleProps) {
+  return function MockTitle({ children, subtitle, className }: MockTitleProps) {
     return (
-      <div data-testid="title" {...props}>
+      <div data-testid="title" className={className}>
         <h1>{children}</h1>
         {subtitle && <p>{subtitle}</p>}
       </div>
