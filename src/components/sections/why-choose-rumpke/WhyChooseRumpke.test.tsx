@@ -117,13 +117,13 @@ describe('WhyChooseRumpke', () => {
     it('has section with border classes', () => {
       render(<WhyChooseRumpke />);
       const section = document.querySelector('section');
-      expect(section).toHaveClass('border-b', 'border-t', 'border-border-l', 'dark:border-border-d');
+      expect(section).toHaveClass('rounded', 'border', 'border-border-l', 'dark:border-border-d');
     });
 
     it('has section with correct spacing', () => {
       render(<WhyChooseRumpke />);
       const section = document.querySelector('section');
-      expect(section).toHaveClass('w-full', 'md:py-12', 'mb-12');
+      expect(section).toHaveClass('w-full', 'mb-12');
     });
 
     it('has grid with responsive columns', () => {

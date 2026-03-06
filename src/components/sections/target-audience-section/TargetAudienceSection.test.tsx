@@ -164,7 +164,7 @@ describe('TargetAudienceSection', () => {
     it('has section element with correct classes', () => {
       render(<TargetAudienceSection />);
       const section = document.querySelector('section');
-      expect(section).toHaveClass('w-full', 'py-4', 'mb-12', 'rounded');
+      expect(section).toHaveClass('w-full', 'overflow-hidden', 'pb-4', 'mb-12', 'rounded');
     });
 
     it('has background color classes', () => {
@@ -177,7 +177,7 @@ describe('TargetAudienceSection', () => {
       render(<TargetAudienceSection />);
       const container = document.querySelector('.container');
       expect(container).toBeInTheDocument();
-      expect(container).toHaveClass('mx-auto', 'p-4');
+      expect(container).toHaveClass('container', 'mx-auto');
     });
 
     it('has grid layout for cards and image', () => {
@@ -204,7 +204,7 @@ describe('TargetAudienceSection', () => {
     it('renders title with correct styling', () => {
       render(<TargetAudienceSection />);
       const title = screen.getByTestId('title');
-      expect(title).toHaveClass('py-4', 'rounded', 'mb-8');
+      expect(title).toHaveClass('py-4', 'mb-8', 'bg-secondary', 'dark:bg-secondary-dark', 'text-white', 'px-2');
     });
 
     it('description has correct text alignment', () => {
