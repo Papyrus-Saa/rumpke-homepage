@@ -1,5 +1,4 @@
 
-
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
@@ -8,7 +7,6 @@ import CompanyTitle from "@/components/branding/companyTitle/CompanyTitle";
 import Script from "next/script";
 import Topmenu from "@/components/layout/top-menu/TopMenu";
 import Footer from "@/components/layout/footer/Footer";
-import SecondaryNav from "@/components/layout/secondary-nav/SecondaryNav";
 import CategoryNav from "@/components/layout/category-nav/CategoryNav";
 import GoogleMap from "@/components/features/map/GoogleMap";
 import Sidebar from "@/components/layout/sidebar/Sidebar";
@@ -44,7 +42,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
               <GoogleMap />
               <Footer />
-              <SecondaryNav />
             </div>
           </div>
           <CompanyTitle />
