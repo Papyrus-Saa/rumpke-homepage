@@ -3,7 +3,7 @@
 # dependencies
 
 .env
-
+.cursorrules/
 
 /node_modules
 /.pnp
@@ -16,6 +16,9 @@
 
 # testing
 /coverage
+
+# lighthouse ci
+.lighthouseci/
 
 # next.js
 /.next/
@@ -40,6 +43,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# todo
+.TODO
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# copilot instructions (private)
+.github/copilot-instructions.md

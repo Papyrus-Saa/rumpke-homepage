@@ -1,23 +1,16 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-
-
-
-type BarBgColor = 'bg-primary' | 'bg-btn-buy' | 'bg-btn-rent';
-
-export interface State {
-  isSidemenuOpen: boolean;
-  barBgColor: BarBgColor;
-  setBarBgColor: (color: BarBgColor) => void;
-  openSidemenu: () => void;
-  closeSidemenu: () => void;
+interface UiState {
+  isSidebarOpen: boolean;
+  openSidebar: () => void;
+  closeSidebar: () => void;
+  toggleSidebar: () => void;
 }
 
-
-export const useUIStore = create<State>()((set) => ({
-  isSidemenuOpen: false,
-  barBgColor: 'bg-primary',
-  setBarBgColor: (color) => set({ barBgColor: color }),
-  openSidemenu: () => set({ isSidemenuOpen: true }),
-  closeSidemenu: () => set({ isSidemenuOpen: false }),
+export const useUiStore = create<UiState>((set) => ({
+  isSidebarOpen: false,
+  openSidebar: () => set({ isSidebarOpen: true }),
+  closeSidebar: () => set({ isSidebarOpen: false }),
+  toggleSidebar: () => set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
 }));
+
