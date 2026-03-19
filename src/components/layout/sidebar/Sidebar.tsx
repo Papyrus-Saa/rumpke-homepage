@@ -71,7 +71,7 @@ const Sidebar = () => {
             Wohnung
           </NavItem>
           <NavItem href="/kategorie/gewerbe" icon={<IoBriefcaseOutline size={20} />} onClick={closeSidebar}>
-            Gewerbe
+            Gewerbeimmobilien
           </NavItem>
           <NavItem href="/kategorie/grundstueck" icon={<IoMapOutline size={20} />} onClick={closeSidebar}>
             Grundstück

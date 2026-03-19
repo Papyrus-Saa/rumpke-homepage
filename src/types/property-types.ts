@@ -5,7 +5,7 @@ export type PropertyType = typeof VALID_TYPES[number];
 export const TYPE_LABELS: Record<PropertyType, string> = {
   haus: "Haus",
   wohnung: "Wohnung",
-  gewerbe: "Gewerbe",
+  gewerbe: "Gewerbeimmobilien",
   grundstueck: "Grundstück",
   sonstige: "Sonstige",
 };
@@ -13,7 +13,7 @@ export const TYPE_LABELS: Record<PropertyType, string> = {
 export const TYPE_LABELS_PLURAL: Record<PropertyType, string> = {
   haus: "Häuser",
   wohnung: "Wohnungen",
-  gewerbe: "Gewerbe",
+  gewerbe: "Gewerbeimmobilien",
   grundstueck: "Grundstücke",
   sonstige: "Sonstige",
 };
