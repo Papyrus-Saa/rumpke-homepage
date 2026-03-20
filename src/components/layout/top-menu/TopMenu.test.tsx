@@ -104,9 +104,14 @@ describe('TopMenu', () => {
   });
 
   describe('Visual Integration', () => {
-    it('uses only Tailwind/global.css classes and variables', () => {
+    it('aplica clases Tailwind relevantes en el menú', () => {
       render(<Topmenu />);
-      expect(document.body).toMatchSnapshot();
+      const menu = screen.getByTestId('menu-btn');
+      expect(menu).toHaveClass('mx-2', 'md:hidden', 'p-1', 'rounded', 'cursor-pointer', 'hover:bg-primary/10', 'dark:hover:bg-primary-dark/20');
+      const kaufBtn = screen.getByText('Kauf');
+      expect(kaufBtn).toHaveClass('border-buy', 'text-white', 'font-bold', 'bg-buy');
+      const mieteBtn = screen.getByText('Miete');
+      expect(mieteBtn).toHaveClass('border-rent', 'text-white', 'font-bold', 'bg-rent');
     });
   });
 });
