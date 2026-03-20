@@ -26,7 +26,10 @@
         "./src/*"
       ]
     },
-    "incremental": true
+    "incremental": true,
+    "types": [
+      "jest"
+    ]
   },
   "include": [
     "next-env.d.ts",
