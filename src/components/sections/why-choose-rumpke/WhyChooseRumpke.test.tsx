@@ -120,6 +120,12 @@ describe('WhyChooseRumpke', () => {
       expect(section).toHaveClass('rounded', 'border', 'border-border-l', 'dark:border-border-d');
     });
 
+    it('has section with padding classes p-4 and md:p-0', () => {
+      render(<WhyChooseRumpke />);
+      const section = document.querySelector('section');
+      expect(section).toHaveClass('p-4', 'md:p-0');
+    });
+
     it('has section with correct spacing', () => {
       render(<WhyChooseRumpke />);
       const section = document.querySelector('section');
