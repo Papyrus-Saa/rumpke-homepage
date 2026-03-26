@@ -7,9 +7,9 @@ const PersonalServiceCard = () => {
 
   return (
     <section aria-label="Personal Service" className="w-full md:py-12 mb-12 rounded border border-border-l dark:border-border-d bg-bgSecondary-l dark:bg-bgSecondary-d shadow-secondary">
-            <Title variant="h2" align="left" className="mb-8 py-4 px-2 rounded" size="xl">
-              Über mich
-            </Title>
+      <Title variant="h2" align="left" className="mb-8 py-4 px-2 rounded" size="xl">
+        Über mich
+      </Title>
       <div className="mx-auto grid lg:grid-cols-2 lg:max-w-full gap-8 items-center">
         <div className="flex justify-center">
           <div className="relative w-full max-w-xs h-100">
@@ -38,7 +38,7 @@ const PersonalServiceCard = () => {
               <Title variant="h2" size="md" className="mb-2">Transparenz und Vertrauen</Title>
               <p className="text-sm dark:text-card-text-d text-card-text-l">Bei uns gibt es keine versteckten Kosten. Wir legen Wert auf eine offene Kommunikation und faire Konditionen.</p>
             </div>
-            <Link href="/ueber-uns" className="inline-block mt-2 px-6 py-2 bg-primary dark:bg-primary-dark text-white rounded font-semibold shadow hover:bg-primary-dark dark:hover:bg-primary">Über mich</Link>
+            <Link href="/ueber-uns" className="inline-block mt-2 px-6 py-2 bg-primary dark:bg-primary-dark text-white rounded font-semibold shadow hover:bg-primary-dark dark:hover:bg-primary">Mehr erfahren</Link>
           </div>
         </div>
       </div>
