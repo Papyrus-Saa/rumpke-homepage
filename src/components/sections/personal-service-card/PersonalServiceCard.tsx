@@ -6,7 +6,7 @@ import Title from '@/components/ui/title/Title';
 const PersonalServiceCard = () => {
 
   return (
-    <section className="w-full md:py-12 mb-12 rounded border border-border-l dark:border-border-d bg-bgSecondary-l dark:bg-bgSecondary-d shadow-secondary">
+    <section aria-label="Personal Service" className="w-full md:py-12 mb-12 rounded border border-border-l dark:border-border-d bg-bgSecondary-l dark:bg-bgSecondary-d shadow-secondary">
             <Title variant="h2" align="left" className="mb-8 py-4 px-2 rounded" size="xl">
               Über mich
             </Title>
