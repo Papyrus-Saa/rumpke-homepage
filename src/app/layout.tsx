@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto, Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import CompanyTitle from "@/components/branding/companyTitle/CompanyTitle";
@@ -10,7 +10,9 @@ import CategoryNav from "@/components/layout/category-nav/CategoryNav";
 import GoogleMap from "@/components/features/map/GoogleMap";
 import Sidebar from "@/components/layout/sidebar/Sidebar";
 import ScrollToTopButton from "@/components/ui/scroll-to-top/ScrollToTopButton";
+import { cn } from "@/lib/utils";
 
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["300", "400", "500", "700"], display: "swap" });
 
@@ -25,7 +27,7 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={roboto.className} suppressHydrationWarning>
+    <html lang="en" className={cn(roboto.className, "font-sans", geist.variable)} suppressHydrationWarning>
       <body className="antialiased">
 
         <ThemeProvider>
