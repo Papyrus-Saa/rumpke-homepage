@@ -1,12 +1,12 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import type { FeaturedProperty } from "@/components/features/triple-slider/TripleSlider.types";
 import TripleSlider from "@/components/features/triple-slider/TripleSlider";
 import { MOCK_FEATURED_PROPERTIES } from "@/data/mock-properties";
-
-const DEFAULT_SITE_URL = "http://localhost:3000";
-const siteName = "Rumpke Immobilien";
-const siteLocale = "de_DE";
+import {
+  defaultOpenGraphMetadata,
+  defaultTwitterMetadata,
+  siteName,
+} from "@/lib/site-metadata";
 
 type RouteParams = {
   slug: string;
@@ -16,16 +16,7 @@ interface PageProps {
   params: Promise<RouteParams>;
 }
 
-type Property = FeaturedProperty;
-
-function resolveMetadataBase(): URL {
-  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  const siteUrl = configuredSiteUrl && configuredSiteUrl.length > 0
-    ? configuredSiteUrl
-    : DEFAULT_SITE_URL;
-
-  return new URL(siteUrl);
-}
+type Property = (typeof MOCK_FEATURED_PROPERTIES)[number];
 
 function getPropertyBySlug(slug: string): Property | undefined {
   return MOCK_FEATURED_PROPERTIES.find(property => property.slug === slug);
@@ -40,6 +31,7 @@ function buildPropertyCanonicalPath(property: Property): string {
 }
 
 function buildPropertyMetadataDescription(property: Property): string {
+  const transactionLabel = property.operationType === "miete" ? "mieten" : "kaufen";
   const propertyDetails = [
     property.type,
     property.location,
@@ -47,9 +39,7 @@ function buildPropertyMetadataDescription(property: Property): string {
     property.rooms ? `${property.rooms} Zimmer` : undefined,
   ].filter((detail): detail is string => Boolean(detail)).join(" · ");
 
-  const transactionLabel = property.operationType === "miete" ? "Zur Miete" : "Zum Kauf";
-
-  return `${property.title}. ${propertyDetails}. ${transactionLabel} für ${property.price}. Jetzt bei ${siteName} anfragen.`;
+  return `${property.title}: ${propertyDetails}. Immobilie jetzt für ${property.price} bei ${siteName} ${transactionLabel}.`;
 }
 
 async function getRouteProperty(paramsPromise: Promise<RouteParams>): Promise<Property> {
@@ -79,19 +69,16 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images ?? [];
 
   return {
-    metadataBase: resolveMetadataBase(),
     title,
     description,
     alternates: {
       canonical: canonicalPath,
     },
     openGraph: {
+      ...defaultOpenGraphMetadata,
       title,
       description,
       url: canonicalPath,
-      locale: siteLocale,
-      siteName,
-      type: "website",
       images: [
         {
           url: property.imageUrl,
@@ -101,6 +88,7 @@ export async function generateMetadata(
       ],
     },
     twitter: {
+      ...defaultTwitterMetadata,
       card: "summary_large_image",
       title,
       description,
