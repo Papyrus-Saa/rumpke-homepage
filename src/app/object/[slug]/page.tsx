@@ -1,7 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import type { FeaturedProperty } from "@/components/features/triple-slider/TripleSlider.types";
 import TripleSlider from "@/components/features/triple-slider/TripleSlider";
 import { MOCK_FEATURED_PROPERTIES } from "@/data/mock-properties";
+
+const DEFAULT_SITE_URL = "http://localhost:3000";
+const siteName = "Rumpke Immobilien";
+const siteLocale = "de_DE";
 
 type RouteParams = {
   slug: string;
@@ -11,22 +16,40 @@ interface PageProps {
   params: Promise<RouteParams>;
 }
 
-type Property = (typeof MOCK_FEATURED_PROPERTIES)[number];
+type Property = FeaturedProperty;
+
+function resolveMetadataBase(): URL {
+  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  const siteUrl = configuredSiteUrl && configuredSiteUrl.length > 0
+    ? configuredSiteUrl
+    : DEFAULT_SITE_URL;
+
+  return new URL(siteUrl);
+}
 
 function getPropertyBySlug(slug: string): Property | undefined {
   return MOCK_FEATURED_PROPERTIES.find(property => property.slug === slug);
 }
 
+function buildPropertyMetadataTitle(property: Property): string {
+  return `${property.title} in ${property.location}`;
+}
+
+function buildPropertyCanonicalPath(property: Property): string {
+  return `/object/${property.slug}`;
+}
+
 function buildPropertyMetadataDescription(property: Property): string {
-  const transactionLabel = property.operationType === "miete" ? "mieten" : "kaufen";
   const propertyDetails = [
     property.type,
     property.location,
     property.area,
     property.rooms ? `${property.rooms} Zimmer` : undefined,
-  ].filter(Boolean).join(" · ");
+  ].filter((detail): detail is string => Boolean(detail)).join(" · ");
 
-  return `${property.title}: ${propertyDetails}. Immobilie jetzt für ${property.price} bei Rumpke Immobilien ${transactionLabel}.`;
+  const transactionLabel = property.operationType === "miete" ? "Zur Miete" : "Zum Kauf";
+
+  return `${property.title}. ${propertyDetails}. ${transactionLabel} für ${property.price}. Jetzt bei ${siteName} anfragen.`;
 }
 
 async function getRouteProperty(paramsPromise: Promise<RouteParams>): Promise<Property> {
@@ -45,24 +68,43 @@ async function getRouteProperty(paramsPromise: Promise<RouteParams>): Promise<Pr
   return property;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: PageProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const property = await getRouteProperty(params);
+  const title = buildPropertyMetadataTitle(property);
   const description = buildPropertyMetadataDescription(property);
+  const canonicalPath = buildPropertyCanonicalPath(property);
+  const previousImages = (await parent).openGraph?.images ?? [];
 
   return {
-    title: `${property.title} in ${property.location} | Rumpke Immobilien`,
+    metadataBase: resolveMetadataBase(),
+    title,
     description,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
-      title: property.title,
+      title,
       description,
-      locale: "de_DE",
-      siteName: "Rumpke Immobilien",
+      url: canonicalPath,
+      locale: siteLocale,
+      siteName,
       type: "website",
+      images: [
+        {
+          url: property.imageUrl,
+          alt: title,
+        },
+        ...previousImages,
+      ],
     },
     twitter: {
-      card: "summary",
-      title: property.title,
+      card: "summary_large_image",
+      title,
       description,
+      images: [property.imageUrl],
     },
   };
 }
