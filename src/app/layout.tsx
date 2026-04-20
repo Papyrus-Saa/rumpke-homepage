@@ -13,7 +13,7 @@ import ScrollToTopButton from "@/components/ui/scroll-to-top/ScrollToTopButton";
 import { siteMetadata } from "@/lib/site-metadata";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["300", "400", "500", "700"], display: "swap" });
 
