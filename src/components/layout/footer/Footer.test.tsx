@@ -312,11 +312,6 @@ describe('Footer', () => {
       expect(link).toHaveAttribute('href', '/datenschutz');
     });
 
-    it('renders "AGB" link', () => {
-      render(<Footer />);
-      const link = screen.getByText('AGB').closest('a');
-      expect(link).toHaveAttribute('href', '/agb');
-    });
   });
 
   describe('Layout Structure', () => {
@@ -442,14 +437,13 @@ describe('Footer', () => {
       expect(links).toHaveLength(4);
     });
 
-    it('Bottom bar has 3 legal links', () => {
+    it('Bottom bar has 2 legal links', () => {
       render(<Footer />);
       const links = [
         screen.getByText('Impressum'),
         screen.getByText('Datenschutz'),
-        screen.getByText('AGB'),
       ];
-      expect(links).toHaveLength(3);
+      expect(links).toHaveLength(2);
     });
   });
 
