@@ -1,57 +1,131 @@
-import Image from 'next/image';
-import Title from '@/components/ui/title/Title';
+"use client";
 
-const features = [
+import { UserCheck, MapPin, Shield, type LucideIcon } from "lucide-react";
+import { useScrollVisible } from "@/hooks/useScrollVisible";
+import { fadeUp } from "@/lib/animation";
+
+type Feature = {
+  readonly number: string;
+  readonly Icon: LucideIcon;
+  readonly title: string;
+  readonly description: string;
+};
+
+type Stat = {
+  readonly value: string;
+  readonly label: string;
+};
+
+const features: readonly Feature[] = [
   {
-    image: '/imgs/why-choose-1.jpg',
-    title: 'Persönlicher Service',
-    text: 'Bei Rumpke Immobilien stehen Sie im Mittelpunkt. Wir bieten individuelle Beratung und persönliche Begleitung in jedem Schritt Ihres Immobilienprojekts. Mit uns haben Sie einen verlässlichen Partner an Ihrer Seite, der Ihre Wünsche versteht und umsetzt.',
+    number: "01",
+    Icon: UserCheck,
+    title: "Persönlicher Service",
+    description:
+      "Bei Rumpke Immobilien stehen Sie im Mittelpunkt. Individuelle Beratung und persönliche Begleitung in jedem Schritt Ihres Immobilienprojekts.",
   },
   {
-    image: '/imgs/why-choose-2.jpg',
-    title: 'Lokale Expertise',
-    text: 'Unser tiefes Verständnis für den regionalen Immobilienmarkt macht den Unterschied. Wir kennen die Besonderheiten der Region, die Entwicklungen und die Menschen. Diese Verwurzelung und unser Engagement für die Gemeinschaft garantieren Ihnen optimale Ergebnisse.',
+    number: "02",
+    Icon: MapPin,
+    title: "Lokale Expertise",
+    description:
+      "Tiefes Verständnis für den regionalen Immobilienmarkt. Wir kennen die Besonderheiten der Region, die Entwicklungen und die Menschen.",
   },
   {
-    image: '/imgs/why-choose-3.jpg',
-    title: 'Transparenz & Fairness',
-    text: 'Vertrauen ist die Basis unserer Arbeit. Wir kommunizieren klar und ehrlich, bieten faire Konditionen und handeln mit absoluter Verlässlichkeit. Bei uns wissen Sie immer, woran Sie sind – für ein gutes Gefühl von Anfang bis Ende.',
+    number: "03",
+    Icon: Shield,
+    title: "Transparenz & Fairness",
+    description:
+      "Vertrauen ist die Basis unserer Arbeit. Klare Kommunikation, faire Konditionen und absolute Verlässlichkeit – von Anfang bis Ende.",
   },
 ];
 
+const stats: readonly Stat[] = [
+  { value: "15+", label: "Jahre Erfahrung" },
+  { value: "200+", label: "Objekte vermittelt" },
+  { value: "100%", label: "Persönliche Betreuung" },
+];
+
 const WhyChooseRumpke = () => {
+  const { ref, visible } = useScrollVisible<HTMLElement>({ threshold: 0.1 });
+
   return (
-    <section className="w-full mb-12 p-4 md:p-0">
-      <div className="mx-auto border-b-4 border-t-4">
-        <Title className='py-4 px-2' variant="h2" size="xl" align="left">Warum Rumpke Immobilien?</Title>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {features.map((feature) => (
-            <div key={feature.title} className="flex flex-col shadow-lg rounded overflow-hidden border border-border-l dark:border-border-d p-4">
-              <div className="relative w-full h-64 mb-4">
-                <Image
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="lazy"
-                />
+    <section
+      ref={ref}
+      aria-label="Warum Rumpke Immobilien"
+      className="w-full px-4 sm:px-6 py-16 md:py-24"
+    >
+      <div className="mx-auto max-w-6xl">
+
+        {/* Header */}
+        <div className={`mb-16 duration-1000 ${fadeUp(visible)}`}>
+          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4 block">
+            Unsere Stärken
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold leading-tight text-foreground mb-4">
+            Warum Rumpke Immobilien?
+          </h2>
+          <p className="text-base text-card-text-l dark:text-card-text-d max-w-xl leading-relaxed">
+            Wir verbinden persönliche Nähe mit regionalem Fachwissen – für ein Immobilienerlebnis, das Sie überzeugt.
+          </p>
+        </div>
+
+        {/* Features */}
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-border-l dark:border-border-d">
+          {features.map((feature, i) => (
+            <div
+              key={feature.number}
+              className={`py-10 duration-700 ${
+                i === 0
+                  ? "md:pr-10"
+                  : "md:px-10 border-t md:border-t-0 md:border-l border-border-l dark:border-border-d"
+              } ${fadeUp(visible)}`}
+              style={{ transitionDelay: visible ? `${200 + i * 150}ms` : "0ms" }}
+            >
+              <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+                <feature.Icon className="w-5 h-5 text-primary" aria-hidden="true" />
               </div>
-              <h2 className="text-lg font-semibold mb-2 text-card-text-l dark:text-card-text-d">
+
+              <p className="text-xs font-semibold tracking-widest text-primary uppercase mb-3">
+                {feature.number}
+              </p>
+
+              <h3 className="text-lg font-bold text-foreground mb-3 leading-snug">
                 {feature.title}
-              </h2>
-              <p className="text-sm text-secondary-l dark:text-secondary-d leading-relaxed">
-                {feature.text}
+              </h3>
+
+              <p className="text-sm leading-relaxed text-card-text-l dark:text-card-text-d">
+                {feature.description}
               </p>
             </div>
           ))}
         </div>
+
+        {/* Stats */}
+        <div
+          className={`grid grid-cols-3 border-t border-border-l dark:border-border-d duration-1000 ${fadeUp(visible)}`}
+          style={{ transitionDelay: visible ? "750ms" : "0ms" }}
+        >
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`py-8 ${
+                i === 0 ? "md:pr-10" : "md:px-10 border-l border-border-l dark:border-border-d"
+              }`}
+            >
+              <span className="block text-3xl sm:text-4xl font-bold text-primary mb-1">
+                {stat.value}
+              </span>
+              <span className="text-sm text-card-text-l dark:text-card-text-d">
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
 };
 
 export default WhyChooseRumpke;
-
-
-
