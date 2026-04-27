@@ -186,11 +186,8 @@ const Footer = () => {
               <Link href="/impressum" className="text-card-text-d hover:text-primary">
                 Impressum
               </Link>
-              <Link href="/datenschutz" className="text-card-text-d hover:text-primary">
+             <Link href="/datenschutz" className="text-card-text-d hover:text-primary">
                 Datenschutz
-              </Link>
-              <Link href="/agb" className="text-card-text-d hover:text-primary">
-                AGB
               </Link>
             </div>
           </div>
