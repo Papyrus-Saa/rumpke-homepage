@@ -21,12 +21,12 @@ const page = () => {
         alt="Rumpke Immobilien Hero Video"
       />
       <SecondaryNav />
-      <div className="text-center mt-12 md:mt-0 py-4">
+      <div className="text-center mt-12 md:mt-0 md:py-8 lg:py-12">
         <Title variant="h1"
           align="center"
           size="xl"
-          subtitle="– lore ipsum dolor sit amet –"
-          className="">Lorem ipsum dolor sit amet</Title>
+          subtitle="Ehrliche Beratung, transparente Abläufe."
+          className="">Ankommen. Wohlfühlen. Zuhause sein.</Title>
       </div>
 
       <main className="p-2 xl:px-20 2xl:px-32 2xl:w-[80%] mx-auto">
