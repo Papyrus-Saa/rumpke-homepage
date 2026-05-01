@@ -10,7 +10,7 @@ import PropertiesGrid from "@/components/properties/PropertiesGrid"
 import { MOCK_FEATURED_PROPERTIES } from "@/data/mock-properties"
 import SecondaryNav from "@/components/layout/secondary-nav/SecondaryNav"
 import ProcessFlowSection from "@/components/sections/process-flow/ProcessFlowSection"
-import { Key, Home } from "lucide-react"
+import PropertyLegend from "@/components/properties/PropertyLegend"
 
 
 const page = () => {
@@ -38,16 +38,7 @@ const page = () => {
             </Title>
             <div className="mb-1">
               <PropertiesGrid properties={MOCK_FEATURED_PROPERTIES} />
-            </div>
-            <div className="flex gap-4 px-2 border rounded mb-2 py-1 border-border-l dark:border-border-d">
-              <div className="flex flex-col items-center gap-2">
-                <Key className="text-buy" size={14} />
-                <span className="text-xs font-medium text-buy">Kauf</span>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <Home className="text-rent" size={14} />
-                <span className="text-xs font-medium text-rent">Miete</span>
-              </div>
+              <PropertyLegend />
             </div>
           </div>
         </section>
