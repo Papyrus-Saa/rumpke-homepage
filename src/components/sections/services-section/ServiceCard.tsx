@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { ArrowRight, Home, Building2, BarChart3, type LucideIcon } from "lucide-react";
 
@@ -37,8 +38,8 @@ export default function ServiceCard({ title, text, link }: ServiceCardProps) {
       />
 
       {/* Icon */}
-      <div className="mt-0.5 flex-shrink-0 flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20 group-hover:bg-primary/20 transition-colors">
-        <Icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
+      <div className="mt-0.5 shrink-0 flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20 group-hover:bg-primary/20 transition-colors">
+        {React.createElement(Icon, { className: "h-5 w-5 text-primary", strokeWidth: 1.8 })}
       </div>
 
       {/* Content */}
@@ -53,7 +54,7 @@ export default function ServiceCard({ title, text, link }: ServiceCardProps) {
 
       {/* Arrow */}
       <ArrowRight
-        className="mt-1 flex-shrink-0 self-center h-5 w-5 text-card-text-l dark:text-card-text-d group-hover:text-primary group-hover:translate-x-1 transition-all"
+        className="mt-1 shrink-0 self-center h-5 w-5 text-card-text-l dark:text-card-text-d group-hover:text-primary group-hover:translate-x-1 transition-all"
         strokeWidth={2}
       />
     </Link>
